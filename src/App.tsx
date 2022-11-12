@@ -6,7 +6,6 @@ import ClipboardJS from 'clipboard'
 import './App.css'
 
 function App() {
-  const [password, setPassword] = useState(passwordGenerator.generate())
   const [generateOptions, setGenerateOptions] = useState<GenerateOptions>({
     length: 12,
     symbols: true,
@@ -14,6 +13,8 @@ function App() {
     lowercase: true,
     uppercase: true,
   })
+  const [password, setPassword] = useState(passwordGenerator.generate(generateOptions))
+
   useEffect(() => {
     const clipboard = new ClipboardJS('#copy-btn')
     return function cleanup() {
